@@ -28,7 +28,11 @@ export default function Form(props) {
         onChange={handleChange}
         data-testid="input-form"
       />
-      <button type="submit" className="btn btn__primary btn__lg">
+      <button
+        data-testid="Add-btn"
+        type="submit"
+        className="btn btn__primary btn__lg"
+      >
         Add
       </button>
     </form>

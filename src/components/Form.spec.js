@@ -9,4 +9,10 @@ describe("Basic rendering of form", () => {
     const value = formComponent.getByTestId("input-form");
     expect(value).toHaveTextContent("");
   });
+
+  it("Add button should be enabled", () => {
+    const formComponent = render(<Form />);
+    const value = formComponent.getByTestId("Add-btn");
+    expect(value).not.toHaveAttribute("disabled");
+  });
 });
