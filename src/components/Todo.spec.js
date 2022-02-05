@@ -3,6 +3,7 @@
 import React from "react";
 import { render, fireEvent } from "@testing-library/react";
 import Todo from "./Todo";
+// import { shallow } from "enzyme";
 
 describe("if the buttons are enabled?", () => {
   it("checks the edit button for enabled status", () => {
@@ -18,7 +19,7 @@ describe("if the buttons are enabled?", () => {
 });
 
 describe("checks the events after clicking the edit button", () => {
-  it("checks if the cancel button is being rendered", () => {
+  it("checks if the cancel button is enabled", () => {
     const component = render(<Todo />);
     const Editvalue = component.getByTestId("editing-btn");
     fireEvent.click(Editvalue);
@@ -26,11 +27,27 @@ describe("checks the events after clicking the edit button", () => {
     expect(value).not.toHaveAttribute("disabled");
   });
 
-  it("checks if the save button is being rendered", () => {
+  it("checks if the save button is enabled", () => {
     const component = render(<Todo />);
     const Editvalue = component.getByTestId("editing-btn");
     fireEvent.click(Editvalue);
     const value = component.getByTestId("save-btn");
     expect(value).not.toHaveAttribute("disabled");
+  });
+
+  it("checks if the save button is being shown", () => {
+    const component = render(<Todo />);
+    const Editvalue = component.getByTestId("editing-btn");
+    fireEvent.click(Editvalue);
+    const value = component.getByTestId("save-btn");
+    expect(value).toBeVisible();
+  });
+  it("checks if the cancel button is being shown", () => {
+    const component = render(<Todo />);
+    // const shallowComponent = shallow(<Todo />);
+    const Editvalue = component.getByTestId("editing-btn");
+    fireEvent.click(Editvalue);
+    const value = component.getByTestId("cancel-btn");
+    expect(value).toBeVisible();
   });
 });
